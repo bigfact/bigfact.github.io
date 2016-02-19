@@ -78,7 +78,7 @@
                     {{ p.name }}, {{ p.age }}
                 </li>
             </ul>
-            
+
             <h3 id="orderByFilter">排序-orderByFilter</h3>
             <ul ng-init="kw9=['-age', 'name']; ps=[{name:'Tom', age:20}, {name:'leon', age:50}, {name:'May', age:21}, {name:'Jack', age:20}, {name:'Alice', age:22}]">
                 <h4>'-'表示这列倒叙排序，默认为顺序排序</h4>
@@ -112,16 +112,17 @@
             <p>{{ ps }}</p>
             <h4>格式化之后</h4>
             <p>{{ ps | json }}</p>
-            
+
             <h3 id="customFilter">自定义Filter - customFilter</h3>
             <ul ng-init="kw10='dsccc'; kw11=2; kw12='bbb'">
                 <h4>{{ kw10 }}的第{{ kw11 }}位的字符替换为{{ kw12 }}</h4>
                 <li>{{ kw10 | filter0:kw11:kw12 }}</li>
-            </div>
-
         </div>
+
     </div>
-    <script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+    </div>
+    <!--<script src="//cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>-->
+    <script src="https://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
     <script>
         var ExApp = angular.module('ExApp', []);
         
@@ -181,7 +182,6 @@
             }
             
         }]);
-        
     </script>
 </body>
 
