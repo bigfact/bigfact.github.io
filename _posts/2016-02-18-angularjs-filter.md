@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "angularjs Filter （过滤）"
+title: "angularjs Filter 过滤器"
 date: 2016-02-18 10:00:00 +0800
 category: angularjs
 ---
