@@ -7,3 +7,4 @@ bigfact.github.io
 ## 参考
 * [Using Jekyll with Pages](https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/)
 * [Jekyll中文文档](http://jekyll.bootcss.com/docs/home/)
+* [Jekyll官方文档](http://jekyllrb.com)

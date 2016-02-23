@@ -14,3 +14,4 @@ category: jekyll
 
 ## 参考文档
 * [Jekyll中文文档](http://jekyll.bootcss.com/docs/home/)
+* [Jekyll官方文档](http://jekyllrb.com/)

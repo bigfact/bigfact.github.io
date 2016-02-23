@@ -16,7 +16,7 @@ twitter_username: bigfact0
 github_username:  bigfact
 
 # Build settings
-markdown: kramdown
+# markdown: kramdown
 # highlighter: rouge
 # highlighter: pygments
 safe:         false
