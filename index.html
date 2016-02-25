@@ -14,8 +14,8 @@ layout: default
         </li>
         {% endfor %}
     </ul>
-    <p>
-        Categories：
+    <div>
+        Categories: 
         {% for cg in site.categories %}
             {% capture this_cg %}{{ cg | first }}{% endcapture %}
         <a href="/categories/#{{ this_cg }}">
@@ -23,6 +23,16 @@ layout: default
         </a>
         {% if forloop.index < forloop.length %}, {% endif %}
         {% endfor %}
-    </p>
+    </div>
+    <div>
+        Tags: 
+        {% for tg in site.tags %}
+            {% capture this_tg %}{{ tg | first }}{% endcapture %}
+        <a href="/tags/#{{ this_tg }}">
+            {{ this_tg }} ({{ site.tags[this_tg].size }})
+        </a>
+        {% if forloop.index < forloop.length %}, {% endif %}
+        {% endfor %}
+    </div>
     <!--<p class="rss-subscribe">subscribe <a href="{{ " /feed.xml " | prepend: site.baseurl }}">via RSS</a></p>-->
 </div>

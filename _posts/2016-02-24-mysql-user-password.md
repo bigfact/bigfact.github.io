@@ -3,6 +3,7 @@ layout: post
 title: "mysql 重置用户密码"
 date: 2016-02-24 17:39:00 +0800
 category: mysql
+tags: 数据库 mysql
 ---
 
 * 登录 mysql

@@ -3,6 +3,7 @@ layout: post
 title: "mac os mysql 安装"
 date: 2016-02-24 16:29:00 +0800
 category: mysql
+tags: mac 数据库 mysql
 ---
 
 * 下载地址：[http://dev.mysql.com/downloads/mysql/](http://dev.mysql.com/downloads/mysql/)

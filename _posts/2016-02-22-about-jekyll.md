@@ -3,6 +3,7 @@ layout: post
 title: "关于jekyll-0"
 date: 2016-02-22 10:00:00 +0800
 category: jekyll
+tags: 博客搭建 jekyll
 ---
 
 ## Jekyll常用变量

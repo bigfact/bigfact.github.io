@@ -3,6 +3,7 @@ layout: post
 title: "angularjs 常用功能"
 date: 2016-02-22 10:00:00 +0800
 category: angularjs
+tags: js angularjs
 ---
 
 * 迭代输出：ng-repeat

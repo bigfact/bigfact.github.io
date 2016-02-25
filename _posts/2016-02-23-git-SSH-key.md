@@ -3,6 +3,7 @@ layout: post
 title: "git - 生成SSH key"
 date: 2016-02-23 16:13:00 +0800
 category: git
+tags: git mac
 ---
 
 ## mac
