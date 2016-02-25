@@ -18,7 +18,7 @@ layout: default
         Categories: 
         {% for cg in site.categories %}
             {% capture this_cg %}{{ cg | first }}{% endcapture %}
-        <a href="/categories/#{{ this_cg }}">
+        <a href="/categories/#{{ this_cg | cgi_escape }}">
             {{ this_cg }} ({{ site.categories[this_cg].size }})
         </a>
         {% if forloop.index < forloop.length %}, {% endif %}
@@ -28,7 +28,7 @@ layout: default
         Tags: 
         {% for tg in site.tags %}
             {% capture this_tg %}{{ tg | first }}{% endcapture %}
-        <a href="/tags/#{{ this_tg }}">
+        <a href="/tags/#{{ this_tg | cgi_escape }}">
             {{ this_tg }} ({{ site.tags[this_tg].size }})
         </a>
         {% if forloop.index < forloop.length %}, {% endif %}
