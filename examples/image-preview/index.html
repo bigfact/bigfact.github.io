@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title id="title">jietu</title>
+    <style>
+        img {
+            display: block;
+            position: relative;
+            margin: 0 auto;
+            cursor: move;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png">
+    <script>
+        (function (window) {
+            function ImagePreview(obj) {
+                this.img = obj;
+            }
+            ImagePriview.prototype = {
+                init: function (obj) {
+                    // 移动开始监听事件
+                    this.img.addEventListener('mousedown', moveStart, false);
+                    // 缩放监听
+                    this.img.addEventListener('mousewheel', imgZoom, false);
+                    this.img.addEventListener('DOMMouseScroll', imgZoom, false);
+                }
+            }
+            var event_state = {};
+            var zoomNum = 1;
+            var maxWidth = window.screen.availWidth;
+            var minWidth = 300;
+            // 移动开始
+            function moveStart(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                event_state.x = this.offsetLeft - getSpotPosition(e).x;
+                event_state.y = this.offsetTop - getSpotPosition(e).y;
+                this.addEventListener('mousemove', moving, false);
+                this.addEventListener('mouseup', moveEnd, false);
+            }
+            // 移动中
+            function moving(e) { 
+                var mouse = {};
+                e.preventDefault();
+                e.stopPropagation();
+                mouse.x = getSpotPosition(e).x;
+                mouse.y = getSpotPosition(e).y;
+                this.style.margin = '0';
+                this.style.left = mouse.x + event_state.x + 'px';
+                this.style.top = mouse.y + event_state.y + 'px';
+            }
+            // 移动结束
+            function moveEnd(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.removeEventListener('mousemove', moving, false);
+                this.removeEventListener('mouseup', moveEnd, false);
+            }
+            // 缩放
+            function imgZoom(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.delta = (e.wheelDelta) ? e.wheelDelta / 120 : -(e.detail || 0) / 3;
+                if(e.delta > 0 && ((zoomNum - 0.1) * this.naturalWidth) >= minWidth) {
+                    zoomNum -= 0.1;
+                }
+                else if(e.delta < 0 && ((zoomNum + 0.1) * this.naturalWidth) <= maxWidth) {
+                    zoomNum += 0.1;
+                }
+                this.style.transform = "scale(" + zoomNum + ")";
+            }
+            // 根据事件对象获取接触点的坐标
+            function getSpotPosition(e) {
+                var touches = {};
+                if(e.touches != undefined) {
+                    touches.x = e.touches[0].clientX;
+                    touches.y = e.touches[0].clientY;
+                }
+                touches.x = (touches.x || e.clientX || e.pageX) + window.scrollX;
+                touches.y = (touches.y || e.clientY || e.pageY) + window.scrollY;
+                return touches;
+            }
+            window.ImagePreview = ImagePreview;
+            return ImagePreview;
+        })(window);
+        new ImagePreview(document.getElementsByTagName('img')[0]).init();
+    </script>
+</body>
+
+</html>
