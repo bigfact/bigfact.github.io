@@ -18,7 +18,7 @@ tags: js
     * 切换图集
     * 标记图片是否已经查看
     
-## 实现
-
+## [实现(demo)](/examples/image-preview/)
+ 
 ## 使用
 
