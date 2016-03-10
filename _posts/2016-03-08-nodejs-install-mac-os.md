@@ -12,13 +12,9 @@ tags: nodejs mac
 * 安装信息
 {% highlight command %}
     Node.js was installed at
-
        /usr/local/bin/node
-
     npm was installed at
-
        /usr/local/bin/npm
-
     Make sure that /usr/local/bin is in your $PATH.
 {% endhighlight %}
 * 检查
