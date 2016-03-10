@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>放大镜使用demo</title>
+</head>
+<script src="jquery-1.10.2.min.js"></script>
+<script src="jquery.enlarge.min.js"></script>
+
+<script>
+//QQ:496928838 微凉
+$(function(){
+	$("#demo").enlarge(
+	{
+		// 鼠标遮罩层样式
+		shadecolor: "#FFD24D",
+		shadeborder: "#FF8000",
+		shadeopacity: 0.4,
+		cursor: "move",
+
+		// 大图外层样式
+		layerwidth: 480,
+		layerheight: 360,
+		layerborder: "#DDD",
+		fade: true,
+
+		// 大图尺寸
+		largewidth: 960,
+		largeheight: 720
+	});
+});
+
+</script>
+<style type="text/css">
+
+</style>
+<body>
+<a href="demo.jpg" id="demo" style="position: relative;float: left;">
+	<img src="demosmall.jpg" width="240" height="180">
+    <img src="demo.jpg" width="960" height="720" style="display: none;">
+</a>
+
+
+</body>
+</html>
