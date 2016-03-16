@@ -79,25 +79,25 @@ tags: css
 {% endhighlight %}
 * 伪元素 - Pseudo-element
 {% highlight css %}
-    ::after (:after)
-    ::-ms-fill
-    ::-ms-fill-lower
-    ::-ms-fill-upper
-    ::-ms-thumb
-    ::-ms-track
-    ::-moz-progress-bar
-    ::-moz-range-progress
-    ::-moz-range-thumb
-    ::-moz-range-track
-    ::-webkit-progress-bar
-    ::-webkit-progress-value
-    ::-webkit-slider-runnable-track
-    ::-webkit-slider-thumb
-    ::before (:before)
-    ::first-letter (:first-letter)
-    ::first-line (:first-line)
-    ::selection
-    ::backdrop
+    ::after (:after)                    /*  */                        
+    ::-ms-fill                          /*  */                
+    ::-ms-fill-lower                    /*  */                        
+    ::-ms-fill-upper                    /*  */                        
+    ::-ms-thumb                         /*  */                
+    ::-ms-track                         /*  */                
+    ::-moz-progress-bar                 /*  */                        
+    ::-moz-range-progress               /*  */                            
+    ::-moz-range-thumb                  /*  */                        
+    ::-moz-range-track                  /*  */                        
+    ::-webkit-progress-bar              /*  */                            
+    ::-webkit-progress-value            /*  */                                
+    ::-webkit-slider-runnable-track     /*  */                                    
+    ::-webkit-slider-thumb              /*  */                            
+    ::before (:before)                  /*  */                        
+    ::first-letter (:first-letter)      /*  */                                    
+    ::first-line (:first-line)          /*  */                                
+    ::selection                         /*  */                
+    ::backdrop                          /*  */                
 {% endhighlight %}
 * 后代选择器 - Descendant
 {% highlight css %}
