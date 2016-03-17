@@ -46,10 +46,11 @@ layout: default
     var itemPerPage = 10;
     // 文章列表
     var list = document.getElementsByClassName('post-list')[0].getElementsByTagName('li');
+    Array.prototype.slice.call(list);
     // 当前列表
-    var currentList = list.slice(currentNum * itemPerPage, itemPerPage - 1);
-    for(var item in currentList) {
-        item.style.display = "block";
+    var currentList = slice(list, currentNum * itemPerPage, itemPerPage - 1);
+    for(var i = 0; i < currentList.length; i++) {
+        currentList[i].style.display = "block";
     }
     // 分页控件
     var ex = new Pagination(document.getElementById('container'));
@@ -59,15 +60,23 @@ layout: default
         currentpage: currentNum     // 设置当前页
     });
     // 当分页控件状态改变时执行的方法
-    ex.onChange(function () {
+    ex.callback(function () {
         console.log(ex.config);
-        for(var item in currentList) {
-            item.style.display = "none";
+        for(var i = 0; i < currentList.length; i++) {
+            currentList[i].style.display = "block";
         }
         currentNum = ex.config.currentpage;
-        currentList = list.slice(currentNum * itemPerPage, itemPerPage * (currentNum + 1) - 1);
-        for(var item in currentList) {
-            item.style.display = "block";
+        currentList = slice(list, currentNum * itemPerPage, itemPerPage * (currentNum + 1) - 1);
+        console.log(currentList);
+        for(var i = 0; i < currentList.length; i++) {
+            currentList[i].style.display = "block";
         }
     });
+    function slice(list, b, e) {
+        var tmp = [];
+        for(var i = b; i < e; i++) {
+            tmp.push(list[i]);
+        }
+        return tmp;
+    }
 </script>
