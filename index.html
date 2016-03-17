@@ -6,7 +6,7 @@ layout: default
     <!--<h1 class="page-heading">所有记录</h1>-->
     <ul class="post-list">
         {% for post in site.posts %}
-        <li>
+        <li style="display: none;">
             <span class="post-meta">{{ post.date | date: "%Y.%m.%d" }}</span>
             <h2>
                 <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
@@ -36,22 +36,38 @@ layout: default
     </div>
     <!--<p class="rss-subscribe">subscribe <a href="{{ " /feed.xml " | prepend: site.baseurl }}">via RSS</a></p>-->
 </div>
-<!--<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 <div id="container"></div>
 <script src="https://bigfact.github.io/TinyThings/tinything/pagination/dist/pagination.min.js"></script>
 <script>
+    // 初始化页码
+    var currentNum = 0;
+    // 每页条目数
+    var itemPerPage = 10;
     // 文章列表
     var list = document.getElementsByClassName('post-list')[0].getElementsByTagName('li');
+    // 当前列表
+    var currentList = list.slice(currentNum * itemPerPage, itemPerPage - 1);
+    for(var item in currentList) {
+        item.style.display = "block";
+    }
     // 分页控件
     var ex = new Pagination(document.getElementById('container'));
     // 初始化分页控件
     ex.init({
-        totalpage: Math.ceil(list.length / 10),      // 设置总页数
-        currentpage: 0,     // 设置当前页
-        numperpage: 7       // 设置表格每页数据显示条数
+        totalpage: Math.ceil(list.length / itemPerPage),      // 设置总页数
+        currentpage: currentNum     // 设置当前页
     });
     // 当分页控件状态改变时执行的方法
-    ex.callback(function () {
+    ex.onChange(function () {
         console.log(ex.config);
+        for(var item in currentList) {
+            item.style.display = "none";
+        }
+        currentNum = ex.config.currentpage;
+        currentList = list.slice(currentNum * itemPerPage, itemPerPage * (currentNum + 1) - 1);
+        for(var item in currentList) {
+            item.style.display = "block";
+        }
     });
-</script>-->
+</script>

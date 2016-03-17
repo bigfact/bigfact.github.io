@@ -1,2 +1,3 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
+# source 'https://ruby.taobao.org/'
 gem 'github-pages'
