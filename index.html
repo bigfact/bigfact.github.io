@@ -2,6 +2,8 @@
 layout: default
 ---
 
+<!--<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">-->
+<link rel="stylesheet" href="{{ "/css/pagination.css" | prepend: site.baseurl }}">
 <div class="home">
     <!--<h1 class="page-heading">所有记录</h1>-->
     <ul class="post-list">
@@ -14,6 +16,8 @@ layout: default
         </li>
         {% endfor %}
     </ul>
+    <div id="container"></div>
+    <br>
     <div>
         Categories: 
         {% for cg in site.categories %}
@@ -24,6 +28,7 @@ layout: default
         {% if forloop.index < forloop.length %}, {% endif %}
         {% endfor %}
     </div>
+    <br>
     <div>
         Tags: 
         {% for tg in site.tags %}
@@ -36,19 +41,20 @@ layout: default
     </div>
     <!--<p class="rss-subscribe">subscribe <a href="{{ " /feed.xml " | prepend: site.baseurl }}">via RSS</a></p>-->
 </div>
-<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-<div id="container"></div>
 <script src="https://bigfact.github.io/TinyThings/tinything/pagination/dist/pagination.min.js"></script>
 <script>
     // 初始化页码
     var currentNum = 0;
     // 每页条目数
-    var itemPerPage = 10;
+    var itemPerPage = 7;
     // 文章列表
     var list = document.getElementsByClassName('post-list')[0].getElementsByTagName('li');
-    Array.prototype.slice.call(list);
+    // 起始位置
+    var findex = currentNum * itemPerPage;
+    var lindex = (currentNum + 1) * itemPerPage - 1;
+    lindex >= list.length && (lindex = list.length - 1);
     // 当前列表
-    var currentList = slice(list, currentNum * itemPerPage, itemPerPage - 1);
+    var currentList = slice(list, findex, lindex);
     for(var i = 0; i < currentList.length; i++) {
         currentList[i].style.display = "block";
     }
@@ -60,22 +66,26 @@ layout: default
         currentpage: currentNum     // 设置当前页
     });
     // 当分页控件状态改变时执行的方法
-    ex.callback(function () {
-        console.log(ex.config);
+    ex.onChange(function () {
         for(var i = 0; i < currentList.length; i++) {
-            currentList[i].style.display = "block";
+            currentList[i].style.display = "none";
         }
-        currentNum = ex.config.currentpage;
-        currentList = slice(list, currentNum * itemPerPage, itemPerPage * (currentNum + 1) - 1);
-        console.log(currentList);
-        for(var i = 0; i < currentList.length; i++) {
+        currentList = null;
+        currentNum = ex.config.currentpage - 1;
+        // 起始位置
+        findex = currentNum * itemPerPage;
+        lindex = (currentNum + 1) * itemPerPage - 1;
+        lindex >= list.length && (lindex = list.length - 1);
+        // 当前列表
+        currentList = slice(list, findex, lindex);
+        for(i = 0; i < currentList.length; i++) {
             currentList[i].style.display = "block";
         }
     });
     function slice(list, b, e) {
         var tmp = [];
-        for(var i = b; i < e; i++) {
-            tmp.push(list[i]);
+        for(var i = b; i <= e; i++) {
+            tmp[i - b] = list[i];
         }
         return tmp;
     }
