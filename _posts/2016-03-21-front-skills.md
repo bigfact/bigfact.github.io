@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "前端技术扫盲"
+title: "近来较火的前端技术"
 date: 2016-03-21 11:09:00 +0800
 category: 前端
 tags: 前端

@@ -41,10 +41,12 @@ layout: default
     </div>
     <!--<p class="rss-subscribe">subscribe <a href="{{ " /feed.xml " | prepend: site.baseurl }}">via RSS</a></p>-->
 </div>
+<script src="{{ "/js/common.js" | prepend: site.baseurl }}"></script>
 <script src="https://bigfact.github.io/TinyThings/tinything/pagination/dist/pagination.min.js"></script>
 <script>
     // 初始化页码
-    var currentNum = 0;
+    var currentNum = parseInt(getHashString(location.href, 'page')) - 1 || 0;
+    (currentNum < 0) && (currentNum = 0);
     // 每页条目数
     var itemPerPage = 7;
     // 文章列表
@@ -62,8 +64,8 @@ layout: default
     var ex = new Pagination(document.getElementById('container'));
     // 初始化分页控件
     ex.init({
-        totalpage: Math.ceil(list.length / itemPerPage),      // 设置总页数
-        currentpage: currentNum     // 设置当前页
+        totalpage: Math.ceil(list.length / itemPerPage),        // 设置总页数
+        currentpage: currentNum + 1                             // 设置当前页
     });
     // 当分页控件状态改变时执行的方法
     ex.onChange(function () {
@@ -81,6 +83,7 @@ layout: default
         for(i = 0; i < currentList.length; i++) {
             currentList[i].style.display = "block";
         }
+        location.href = location.origin + location.pathname + "#page=" + (currentNum + 1);
     });
     function slice(list, b, e) {
         var tmp = [];
