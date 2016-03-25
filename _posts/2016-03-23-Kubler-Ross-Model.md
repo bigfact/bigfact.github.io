@@ -2,7 +2,7 @@
 layout: post
 title: "库伯勒-罗丝模型 - Kubler-Ross-Model"
 date: 2016-03-23 14:19:00 +0800
-category: 心理
+category: psychology
 tags: 心理
 ---
 

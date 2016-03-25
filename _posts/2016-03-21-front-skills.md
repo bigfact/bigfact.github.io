@@ -2,7 +2,7 @@
 layout: post
 title: "近来较火的前端技术"
 date: 2016-03-21 11:09:00 +0800
-category: 前端
+category: frontend
 tags: 前端
 ---
 
