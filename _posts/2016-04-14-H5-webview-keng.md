@@ -31,12 +31,12 @@ tags: html APP
 ### 关于 unload 和 beforeunload 事件
 
 #### 问题
-* Android 中，关闭或者返回都会触发 unload 和 beforeunload 事件
+* Android 中，关闭或者返回都会触发 unload 和 beforeunload 事件（也存在部分机型不会触发的情况，主要是一些比较配置较低的旧机型）
 * IOS 中，如果当前关闭的页面是载入的第一个页面（历史为 1 ），关闭则不会触发 unload 和 beforeunload 事件，点击页面上的链接进入其他页面会触发 unload 和 beforeunload 事件，之后的页面（历史大于 1）也会触发
 
 #### 解决
-  IOS 退出 webview 时，使用一个空的 URL 来替代当前关闭页面，从而触发 unload 和 beforeunload 事件
-
+  1. IOS 退出 webview 时，使用一个空的 URL 来替代当前关闭页面，从而触发 unload 和 beforeunload 事件
+  2. 比较重要的操作（例如与服务器的交互），需要用户的主动参与（按钮点击触发或者其他）
 
 ## 参考
 * [MDN - 事件 - beforeunload](https://developer.mozilla.org/zh-CN/docs/Web/Events/beforeunload)
