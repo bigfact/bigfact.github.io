@@ -6,8 +6,9 @@ category: React
 tags: React APP
 ---
 
-## 
-根据 f8app 项目中的安装步骤进行安装，有的步骤需要科学上网
+## 开始
+
+* 根据 f8app 项目中的安装步骤进行安装，有的步骤需要科学上网
 
 ## 出现的问题
 
@@ -21,7 +22,9 @@ tags: React APP
 {% endhighlight %}
 
 ### Android
+
 * 启动 Android Virtual Device 报错，信息如下，简单粗暴关掉 VirtualBox 虚拟机解决问题
+
   > Starting emulator for AVD 'reactnative'
   > emulator: WARNING: VM heap size set below hardware specified minimum of 256MB
   > emulator: WARNING: Setting VM heap size to 512MB
@@ -40,6 +43,7 @@ tags: React APP
   > Internal error: initial hax sync failed
 
 * build 报错，信息如下，打开 Android SDK Manager 安装 google repository 和 google play services
+
   > JS server already running.
   > Building and installing the app on the device (cd android && ./gradlew installDebug...
   > 
@@ -74,5 +78,9 @@ tags: React APP
   > https://facebook.github.io/react-native/docs/android-setup.html
 
 ## 参考
+
+* [react native - 官网](http://facebook.github.io/react-native/)
 * [github - f8app](https://github.com/bigfact/f8app)
 * [f8app - 官网](http://makeitopen.com/) - 需科学上网
+* [Android 开发工具](http://androiddevtools.cn/)
+* [关于 Cocoapods 安装的小细节错误](http://blog.sina.com.cn/s/blog_aac63dce0102w9q9.html)

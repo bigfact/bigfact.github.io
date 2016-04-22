@@ -18,3 +18,7 @@ tags: mac 数据库 mysql
     PATH="$PATH":/usr/local/mysql/bin
 {% endhighlight %}
 * 安装信息：2016-02-24T08:26:47.950234Z 1 [Note] A temporary password is generated for root@localhost: 6!C6t9BWL3Id, If you lose this password, please consult the section How to Reset the Root Password in the MySQL reference manual.
+
+## 参考
+
+* [MacOSX中设置和改变$PATH变量](http://www.tuicool.com/articles/uQnaMnY)
