@@ -1,4 +1,4 @@
-# [bigfact.github.io](https://bigfact.github.io){:target="_blank"}
+# [bigfact.github.io](https://bigfact.github.io)
 bigfact.github.io
 
 ## 安装
@@ -24,14 +24,12 @@ bigfact.github.io
   > {{ site.baseurl }}
   
 * gem 安装 bundler 报错
-  * 信息
 ```
+  // 问题
   $ sudo gem install bundler
     ERROR:  While executing gem ... (Errno::EPERM)
       Operation not permitted - /usr/bin/bundle
-```
-  * 解决
-```
+  // 解决
   $ sudo gem install -n /usr/local/bin bundler
 ```
 
