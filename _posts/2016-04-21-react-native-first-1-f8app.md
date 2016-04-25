@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "React Native 初体验 - f8app"
+title: "React Native 初体验 - 1 - f8app"
 date: 2016.04.21 18:55:00 +0800
-category: React
-tags: React APP
+category: React-Native
+tags: React-Native
 ---
 
 ## 开始
@@ -31,9 +31,12 @@ tags: React APP
 
 * 常用命令行
 {% highlight cammand %}
+  // Android tools
+  $ android       // 打开 Android SDK Manager
+  $ android avd   // 打开 Android Virtual Device (AVD) 管理器
   // Android Debug Bridge
-  $ adb device
-  $ adb reverse tcp:8081 tcp:8081
+  $ adb device    // 查看连接的 Android 设备
+  $ adb reverse tcp:8081 tcp:8081   
   $ adb reverse tcp:8080 tcp:8080
   $ adb shell input keyevent 82
 {% endhighlight %}

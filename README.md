@@ -1,6 +1,12 @@
 # [bigfact.github.io](https://bigfact.github.io)
 bigfact.github.io
 
+## 环境
+* nodejs
+* git
+* ruby and gem
+* Jekyll
+
 ## 安装
 
 > bundle install
@@ -13,7 +19,7 @@ bigfact.github.io
 
 > bundle update
 
-## 小技巧
+## 记录
 
 * 打开新标签的链接
 
@@ -22,6 +28,9 @@ bigfact.github.io
 * 网站根路径
 
   > {{ site.baseurl }}
+
+* 使用 RVM 管理 Ruby
+  * [rvm 实用指南 - Ruby China](https://ruby-china.org/topics/576)
   
 * gem 安装 bundler 报错
 ```
@@ -37,8 +46,8 @@ bigfact.github.io
 ## 参考
 
 * [Using Jekyll with Pages](https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/)
-* [Jekyll中文文档](http://jekyll.bootcss.com/docs/home/)
-* [Jekyll官方文档](http://jekyllrb.com)
+* [Jekyll 中文文档](http://jekyll.bootcss.com/docs/home/)
+* [Jekyll 官方文档](http://jekyllrb.com)
 * [gem 国内镜像 - ruby - China](http://gems.ruby-china.org/)
 * [gem 国内镜像 - taobao](https://ruby.taobao.org/)
 * [rvm 管理 ruby](https://ruby-china.org/wiki/rvm-guide)
