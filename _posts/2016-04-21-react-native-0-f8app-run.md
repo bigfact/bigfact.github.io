@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "React Native 初体验 - 1 - f8app"
+title: "React Native - 0 - f8app - 本地运行"
 date: 2016.04.21 18:55:00 +0800
 category: React-Native
 tags: React-Native
@@ -36,7 +36,7 @@ tags: React-Native
   $ android avd   // 打开 Android Virtual Device (AVD) 管理器
   // Android Debug Bridge
   $ adb device    // 查看连接的 Android 设备
-  $ adb reverse tcp:8081 tcp:8081   
+  $ adb reverse tcp:8081 tcp:8081   // 需 Android 5.0 以上
   $ adb reverse tcp:8080 tcp:8080
   $ adb shell input keyevent 82
 {% endhighlight %}
@@ -109,6 +109,7 @@ tags: React-Native
 * [react native - 官网](http://facebook.github.io/react-native/)
 * [github - f8app](https://github.com/fbsamples/f8app)
 * [f8app - 官网](http://makeitopen.com/) - 需科学上网
+* [f8app - 中文翻译](http://f8-app.liaohuqiu.net/)
 * [mongo - 官网](https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/)
 * [Android 开发工具](http://androiddevtools.cn/)
 * [关于 Cocoapods 安装的小细节错误](http://blog.sina.com.cn/s/blog_aac63dce0102w9q9.html)
