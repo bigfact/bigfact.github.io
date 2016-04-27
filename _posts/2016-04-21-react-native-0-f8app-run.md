@@ -106,6 +106,8 @@ tags: React-Native
 
 ## 参考
 
+* [react](http://facebook.github.io/react/)
+* [react - China](http://reactjs.cn/react/index.html)
 * [react native - 官网](http://facebook.github.io/react-native/)
 * [github - f8app](https://github.com/fbsamples/f8app)
 * [f8app - 官网](http://makeitopen.com/) - 需科学上网
