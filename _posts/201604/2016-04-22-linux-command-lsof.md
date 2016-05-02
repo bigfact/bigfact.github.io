@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "linux 命令 -- lsof"
+title: "linux - 命令 - lsof"
 date: 2016-04-22 09:50:00 +0800
 category: linux
-tags: linux mac command
+tags: linux
 ---
 
-> lsof(list open files)是一个列出当前系统打开文件的工具。
+> lsof (list open files) 是一个列出当前系统打开文件的工具
 
 ## 语法格式
   lsof ［options］ filename

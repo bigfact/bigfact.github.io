@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "linux 命令 -- 文件和目录"
+title: "linux - 命令 - 文件和目录"
 date: 2016-04-07 12:32:00 +0800
 category: linux
 tags: linux
