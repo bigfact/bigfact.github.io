@@ -1,7 +1,7 @@
-/*
-    作者: bigfact<bigfact0@gmail.com>
-    日期: 2016.03.22
-*/
+/**
+ * @author bigfact<bigfact0@gmail.com>
+ * @date 2016.03.22
+ */
 
 // 根据 url 获取查询参数 param
 function getQueryString(url, param) {
