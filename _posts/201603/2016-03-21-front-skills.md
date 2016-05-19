@@ -63,3 +63,4 @@ tags: 前端
 * [阮一峰 - 也许，DOM 不是答案](http://www.ruanyifeng.com/blog/2015/02/future-of-dom.html)
 * [segmentfault - 前端框架的作用是什么？什么时候需要用到前端框架？](https://segmentfault.com/q/1010000000362432)
 * [知乎 - 怎么看待「我今天吃药的时候看到一个新闻」这个小测试？](https://www.zhihu.com/question/41619834/answer/92849941)
+* [知乎专栏 - Vue.js：a (re)introduction](https://zhuanlan.zhihu.com/p/20302927)
