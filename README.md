@@ -5,19 +5,23 @@ bigfact.github.io
 * nodejs
 * git
 * ruby and gem
-* Jekyll
 
 ## 安装
-
-> bundle install
+```
+$ gem intsall bundle
+$ gem install jekyll
+$ bundle install
+```
 
 ## 运行
-
-> bundle exec jekyll serve
+```
+$ bundle exec jekyll serve
+```
 
 ## 更新本地开发环境
-
-> bundle update
+```
+$ bundle update
+```
 
 ## 记录
 
