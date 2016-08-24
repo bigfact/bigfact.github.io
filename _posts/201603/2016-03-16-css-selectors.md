@@ -2,7 +2,7 @@
 layout: post
 title: "css 选择器"
 date: 2016-03-16 14:13:00 +0800
-category: css
+category: frontend
 tags: css
 ---
 

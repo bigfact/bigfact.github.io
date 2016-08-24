@@ -2,7 +2,7 @@
 layout: post
 title: "mysql 提示符"
 date: 2016-02-25 10:58:00 +0800
-category: mysql
+category: database
 tags: 数据库 mysql
 ---
 

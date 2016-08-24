@@ -2,7 +2,7 @@
 layout: post
 title: "sass 基本概念及功能"
 date: 2016-03-21 12:33:00 +0800
-category: sass
+category: frontend
 tags: css sass
 ---
 

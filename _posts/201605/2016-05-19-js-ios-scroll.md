@@ -2,7 +2,7 @@
 layout: post
 title: "js - IOS 中的滚动事件"
 date: 2016-05-19 17:20:00 +0800
-category: js
+category: frontend
 tags: js
 ---
 

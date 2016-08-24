@@ -2,7 +2,7 @@
 layout: post
 title: "rvm 安装"
 date: 2016-03-17 16:59:00 +0800
-category: ruby
+category: backend
 tags: ruby rvm
 ---
 

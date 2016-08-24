@@ -2,7 +2,7 @@
 layout: post
 title: "js 正则表达式"
 date: 2016-03-22 14:24:00 +0800
-category: js
+category: frontend
 tags: js 正则表达式
 ---
 

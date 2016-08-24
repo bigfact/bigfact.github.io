@@ -2,7 +2,7 @@
 layout: post
 title: "Rachael Yamagata - Duet - Chords"
 date: 2016-04-20 22:50:00 +0800
-category: guiter
+category: interest
 tags: guiter
 ---
 

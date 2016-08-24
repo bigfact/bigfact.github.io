@@ -2,7 +2,7 @@
 layout: post
 title: "linux - 命令 - lsof"
 date: 2016-04-22 09:50:00 +0800
-category: linux
+category: OS
 tags: linux
 ---
 

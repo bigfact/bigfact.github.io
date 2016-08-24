@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "H5 嵌入到 webview 中所遇到的一些坑"
+title: "网页生命周期事件"
 date: 2016.04.14 19:27:00 +0800
-category: html
-tags: html APP
+category: frontend
+tags: html
 ---
 
 > ## 2016.04.14 19:27 更新

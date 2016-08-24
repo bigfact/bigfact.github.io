@@ -2,7 +2,7 @@
 layout: post
 title: "React Native - 0 - f8app - 本地运行"
 date: 2016.04.21 18:55:00 +0800
-category: React-Native
+category: frontend
 tags: React-Native
 ---
 

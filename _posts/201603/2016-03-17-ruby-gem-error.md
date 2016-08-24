@@ -2,7 +2,7 @@
 layout: post
 title: "gem error"
 date: 2016-03-17 18:05:00 +0800
-category: ruby
+category: backend
 tags: ruby gem bundle
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: "js 面向对象基本概念"
 date: 2016-02-26 10:34:00 +0800
-category: js
+category: frontend
 tags: js
 ---
 

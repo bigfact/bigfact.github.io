@@ -2,7 +2,7 @@
 layout: post
 title: "mac os mysql 安装"
 date: 2016-02-24 16:29:00 +0800
-category: mysql
+category: database
 tags: mac 数据库 mysql
 ---
 

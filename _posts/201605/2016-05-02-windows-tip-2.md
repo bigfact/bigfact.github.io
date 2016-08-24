@@ -2,7 +2,7 @@
 layout: post
 title: "windows - 清理右键菜单"
 date: 2016-05-02 20:52:00 +0800
-category: windows
+category: OS
 tags: windows
 ---
 

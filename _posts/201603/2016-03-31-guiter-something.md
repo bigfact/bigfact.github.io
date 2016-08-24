@@ -2,7 +2,7 @@
 layout: post
 title: "弹吉他的一点事"
 date: 2016-03-31 00:20:00 +0800
-category: guiter
+category: interest
 tags: guiter
 ---
 

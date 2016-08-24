@@ -2,7 +2,7 @@
 layout: post
 title: "好想你 - - 吉他谱"
 date: 2016-03-21 23:35:00 +0800
-category: guiter
+category: interest
 tags: guiter
 ---
 

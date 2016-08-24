@@ -2,7 +2,7 @@
 layout: post
 title: "mysql 常用查询语句"
 date: 2016-02-25 10:39:00 +0800
-category: mysql
+category: database
 tags: 数据库 sql mysql
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: "linux - 文件系统错误"
 date: 2016-05-02 20:31:00 +0800
-category: linux
+category: OS
 tags: linux
 ---
 

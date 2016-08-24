@@ -2,7 +2,7 @@
 layout: post
 title: "windows - win7 - 设置 wifi 热点"
 date: 2016-05-02 20:41:00 +0800
-category: windows
+category: OS
 tags: windows
 ---
 
