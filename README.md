@@ -26,12 +26,10 @@ $ bundle update
 ## 记录
 
 * 打开新标签的链接
-
-  > [a 标签内容]\(链接地址){:target="_blank"}
+  * [a 标签内容]\(链接地址){:target="_blank"}
   
 * 网站根路径
-
-  > {{ site.baseurl }}
+  * {{ site.baseurl }}
 
 * 使用 RVM 管理 Ruby
   * [rvm 实用指南 - Ruby China](https://ruby-china.org/topics/576)
