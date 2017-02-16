@@ -1,5 +1,4 @@
-# [bigfact.github.io](https://bigfact.github.io)
-bigfact.github.io
+# [bigfact blog](https://blog.bigfact.cc)
 
 ## 环境
 * nodejs

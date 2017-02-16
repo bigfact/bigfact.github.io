@@ -11,8 +11,8 @@ email: bigfact@foxmail.com
 description: > # this means to ignore newlines until "baseurl:"
     He says, 'Hello World'!
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://bigfact.github.io" # the base hostname & protocol for your site
-twitter_username: bigfact0
+url: "http://blog.bigfact.cc" # the base hostname & protocol for your site
+# twitter_username: bigfact0
 github_username: bigfact
 
 # Build settings
