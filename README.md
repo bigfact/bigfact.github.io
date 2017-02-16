@@ -1,4 +1,4 @@
-# [bigfact blog](https://blog.bigfact.cc)
+# [bigfact blog](http://blog.bigfact.cc)
 
 ## 环境
 * nodejs
