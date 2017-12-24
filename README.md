@@ -7,7 +7,7 @@
 
 ## 安装
 ```
-$ gem intsall bundle
+$ gem install bundle
 $ gem install jekyll
 $ bundle install
 ```
