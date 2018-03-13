@@ -3,7 +3,7 @@ layout: default
 ---
 
 <!--<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">-->
-<link rel="stylesheet" href="{{ "/css/pagination.css" | prepend: site.baseurl }}">
+<!-- <link rel="stylesheet" href="{{ "/css/pagination.css" | prepend: site.baseurl }}"> -->
 <div class="home">
     <!--<h1 class="page-heading">所有记录</h1>-->
     <ul class="post-list">
@@ -16,7 +16,7 @@ layout: default
         </li>
         {% endfor %}
     </ul>
-    <div id="container"></div>
+    <!-- <div id="container"></div> -->
     <br>
     <div>
         Categories: 
@@ -41,9 +41,33 @@ layout: default
     </div>
     <!--<p class="rss-subscribe">subscribe <a href="{{ " /feed.xml " | prepend: site.baseurl }}">via RSS</a></p>-->
 </div>
-<script src="{{ "/js/common.js" | prepend: site.baseurl }}"></script>
-<script src="/frontforge/dist/components/pagination/js/pagination.min.js"></script>
 <script>
+    // 初始化页码
+    var currentNum = 0;
+    // 每页条目数
+    var itemPerPage = 12;
+    // 文章列表
+    var list = document.querySelectorAll('.post-list li');
+    // 起始位置
+    var findex = currentNum * itemPerPage;
+    var lindex = (currentNum + 1) * itemPerPage - 1;
+    lindex >= list.length && (lindex = list.length - 1);
+    // 当前列表
+    var currentList = slice(list, findex, lindex);
+    for(var i = 0; i < currentList.length; i++) {
+        currentList[i].style.display = "block";
+    }
+    function slice(list, b, e) {
+        var tmp = [];
+        for(var i = b; i <= e; i++) {
+            tmp[i - b] = list[i];
+        }
+        return tmp;
+    }
+</script>
+<!-- <script src="{{ "/js/common.js" | prepend: site.baseurl }}"></script> -->
+<!-- <script src="/frontforge/dist/components/pagination/js/pagination.min.js"></script> -->
+<!-- <script>
     // 初始化页码
     var currentNum = parseInt(getHashString(location.href, 'page')) - 1 || 0;
     (currentNum < 0) && (currentNum = 0);
@@ -92,4 +116,4 @@ layout: default
         }
         return tmp;
     }
-</script>
+</script> -->
