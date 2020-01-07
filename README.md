@@ -49,6 +49,5 @@ $ bundle update
 * [Using Jekyll with Pages](https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/)
 * [Jekyll 中文文档](http://jekyll.bootcss.com/docs/home/)
 * [Jekyll 官方文档](http://jekyllrb.com)
-* [gem 国内镜像 - ruby - China](http://gems.ruby-china.org/)
-* [gem 国内镜像 - taobao](https://ruby.taobao.org/)
-* [rvm 管理 ruby](https://ruby-china.org/wiki/rvm-guide)
+* [gem 国内镜像 - ruby - China](http://gems.ruby-china.com/)
+* [rvm 管理 ruby](https://ruby-china.com/wiki/rvm-guide)
