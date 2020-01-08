@@ -44,11 +44,21 @@
 		this.page.url = location.href;
 		this.page.identifier = document.title;
 	};
+
 	(function () { // DON'T EDIT BELOW THIS LINE
 		var d = document, s = d.createElement('script');
 		s.src = '//bigfact.disqus.com/embed.js';
 		s.setAttribute('data-timestamp', +new Date());
 		(d.head || d.body).appendChild(s);
+	})();
+
+	(function () {
+		// add target="_blank" to outside link
+		document.querySelectorAll('.post-content a').forEach(el => {
+			if (el.href.indexOf(window.location.host) < 0 && /^http(s)?:\/\/.+$/.test(el.href)) {
+				el.setAttribute('target', '_blank')
+			}
+		})
 	})();
 </script>
 <noscript>Please enable JavaScript to view the
