@@ -40,6 +40,139 @@
 </footer>
 
 <script>
+	// 示例 js 脚本代码编辑、执行
+	!(function () {
+		function insertStyle() {
+			var style = document.createElement("style");
+			style.textContent = `
+			.code-run-btn {
+				height: 30px;
+				line-height: 30px;
+				margin: 12px 0 6px;
+				padding: 0 30px;
+				font-size: 17px;
+				box-sizing: border-box;
+				border-radius: 0;
+				border: 1px solid #999;
+				display: block;
+			}
+			.code-executor-result {
+				border: 1px solid #999;
+				height: 100px;
+				width: 100%;
+				border-radius: 0;
+			}
+		`;
+			document.head.appendChild(style);
+		}
+
+		function getExecutorDoc(codeString) {
+			return `
+				<!DOCTYPE html>
+					<html lang="en">
+					<head>
+							<meta charset="UTF-8">
+							<meta http-equiv="X-UA-Compatible" content="IE=edge">
+							<meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<title></title>
+							<style>
+							body {
+								margin: 0;
+							}
+							.console-line {
+								border-bottom: 1px solid #999;
+								margin: 6px auto;
+								padding: 3px 6px;
+							}
+							.error {
+								color: red;
+							}
+							.warn {
+								color: orange;
+							}
+							</style>
+					</head>
+					<body>
+						<script>
+							var div = document.createElement("div");
+							div.className = 'console-content'
+							document.body.appendChild(div);
+							function toString(val) {
+								var type = Object.prototype.toString.call(val)
+								if (/Boolean|Number|String/.test(type)) {
+									return val.toString();
+								} else if (/Array|Object/.test(type)) {
+									return JSON.stringify(val, "", 2);
+								} else {
+									try {
+										return val.toString()
+									} catch (err) {
+										return val;
+									}
+								}
+							}
+							function consoleFunc(func) {
+								return function() {
+									var args = [].slice.call(arguments);
+									var p = document.createElement("p");
+									p.className = "console-line " + func;
+									for (var i = 0; i < args.length; i++) {
+										p.innerHTML += " " + toString(args[i]);
+									}
+									div.appendChild(p);
+								}
+							}
+							console.log = consoleFunc("log");
+							console.error = consoleFunc("error");
+							console.warn = consoleFunc("warn");
+							console.info = consoleFunc("info");
+						</script>
+						<script>
+							try {
+								${codeString}
+							} catch(err) {
+								console.error(err);
+							}
+						</script>
+					</body>
+				</html>
+			`;
+		}
+
+		function handleCodeEl(el) {
+			el.setAttribute("contenteditable", "");
+			var executor = document.createElement("div");
+			executor.className = "code-executor";
+
+			var runBtn = document.createElement("button");
+			runBtn.className = "code-run-btn";
+			runBtn.textContent = "Run";
+			runBtn.addEventListener(
+				"click",
+				function (e) {
+					iframe.srcdoc = getExecutorDoc(el.textContent);
+				},
+				false
+			);
+			executor.appendChild(runBtn);
+
+			var iframe = document.createElement("iframe");
+			iframe.sandbox = "allow-scripts";
+			iframe.src = "about:blank";
+			iframe.className = "code-executor-result";
+			iframe.srcdoc = getExecutorDoc(el.textContent);
+			executor.appendChild(iframe);
+
+			el.parentNode.insertBefore(executor, el.nextElementSibling);
+		}
+
+		insertStyle();
+		document.querySelectorAll(".language-js code").forEach(handleCodeEl);
+		document.querySelectorAll("code.language-js").forEach(handleCodeEl);
+	})();
+</script>
+
+<script>
 	var disqus_config = function () {
 		this.page.url = location.href;
 		this.page.identifier = document.title;
