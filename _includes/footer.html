@@ -40,6 +40,78 @@
 </footer>
 
 <script>
+	// 生成目录
+	(function () {
+		function getHList() {
+			let result = Array.prototype.slice
+				.call(document.querySelectorAll("*[id]"))
+				.filter((el) => {
+					return /h[1-6]/i.test(el.tagName);
+				});
+			result.forEach((el) => {
+				el._index = parseInt(el.tagName.replace(/h/i, ""));
+			});
+			return result;
+		}
+
+		function genRelation(hList) {
+			let hIndex = 0;
+			let parent = { _children: [] };
+			let result = parent;
+			hList.forEach((el) => {
+				let elIndex = el._index;
+				hIndex = hIndex || elIndex;
+				if (elIndex > hIndex) {
+					parent = parent._children[parent._children.length - 1];
+					hIndex++;
+				} else if (elIndex < hIndex) {
+					parent = parent._parent;
+					hIndex--;
+				}
+				el._children = el._children || [];
+				el._parent = parent;
+				parent._children.push(el);
+			});
+			return result;
+		}
+
+		function autoIndex(result, prefix) {
+			prefix = prefix || "";
+			for (let i = 0; i < result.length; i++) {
+				let cPrefix = prefix + (i + 1) + ".";
+				result[i].textContent = cPrefix + " " + result[i].textContent;
+				autoIndex(result[i]._children, cPrefix);
+			}
+		}
+
+		function genListElement(result) {
+			let ul = document.createElement("ul");
+			for (let i = 0; i < result.length; i++) {
+				let el = result[i];
+				let a = document.createElement("a");
+				a.href = "#" + el.id;
+				a.textContent = el.textContent;
+				let li = document.createElement("li");
+				li.appendChild(a);
+				li.appendChild(genListElement(el._children));
+				ul.appendChild(li);
+			}
+			return ul;
+		}
+
+		function insertList(result) {
+			let list = genListElement(result)
+			document.querySelector('header.post-header').appendChild(list);
+		}
+
+		let hList = getHList();
+		let result = genRelation(hList)._children;
+		autoIndex(result);
+		insertList(result)
+	})();
+</script>
+
+<script>
 	// 示例 js 脚本代码编辑、执行
 	!(function () {
 		function insertStyle() {
@@ -90,6 +162,9 @@
 							.warn {
 								color: orange;
 							}
+							.num {
+								opacity: 0.7;
+							}
 							</style>
 					</head>
 					<body>
@@ -113,11 +188,19 @@
 							}
 							function consoleFunc(func) {
 								return function() {
+									consoleFunc.num = consoleFunc.num || 0
+									consoleFunc.num++
 									var args = [].slice.call(arguments);
 									var p = document.createElement("p");
 									p.className = "console-line " + func;
+									var num = document.createElement("i");
+									num.textContent = consoleFunc.num + ':';
+									num.className = "num";
+									p.appendChild(num);
 									for (var i = 0; i < args.length; i++) {
-										p.innerHTML += " " + toString(args[i]);
+										var span = document.createElement("span");
+										span.textContent = " " + toString(args[i]);
+										p.appendChild(span);
 									}
 									div.appendChild(p);
 								}
@@ -126,13 +209,18 @@
 							console.error = consoleFunc("error");
 							console.warn = consoleFunc("warn");
 							console.info = consoleFunc("info");
+							
+							window.addEventListener('error', function(event) {
+								event.preventDefault();
+								event.stopPropagation();
+								console.error(event.error);
+							});
+						
 						<\/script>
 						<script>
-							try {
+							(function () {
 								${codeString}
-							} catch(err) {
-								console.error(err);
-							}
+							})()
 						<\/script>
 					</body>
 				</html>
