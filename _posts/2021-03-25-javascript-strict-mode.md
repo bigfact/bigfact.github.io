@@ -3,7 +3,7 @@ layout: post
 title: "JavaScript 严格模式"
 date: 2021-03-25 03:33:38 +0800
 category: frontend
-tags: js
+tags: JavaScript
 ---
 
 严格模式（strict mode），于 [ECMAScript 5](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/) 中提出。区别于正常模式（sloppy mode/马虎模式/稀松模式/懒散模式）

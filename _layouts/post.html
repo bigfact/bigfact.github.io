@@ -105,24 +105,24 @@ layout: default
         function insertStyle() {
             var style = document.createElement("style");
             style.textContent = `
-			.code-run-btn {
-				height: 30px;
-				line-height: 30px;
-				margin: 12px 0 6px;
-				padding: 0 30px;
-				font-size: 17px;
-				box-sizing: border-box;
-				border-radius: 0;
-				border: 1px solid #999;
-				display: block;
-			}
-			.code-executor-result {
-				border: 1px solid #999;
-				height: 100px;
-				width: 100%;
-				border-radius: 0;
-			}
-		`;
+                .code-run-btn {
+                    height: 30px;
+                    line-height: 30px;
+                    margin: 12px 0 6px;
+                    padding: 0 30px;
+                    font-size: 17px;
+                    box-sizing: border-box;
+                    border-radius: 0;
+                    border: 1px solid #999;
+                    display: block;
+                }
+                .code-executor-result {
+                    border: 1px solid #999;
+                    height: 100px;
+                    width: 100%;
+                    border-radius: 0;
+                }
+            `;
             document.head.appendChild(style);
         }
 
@@ -248,7 +248,7 @@ layout: default
             iframe.sandbox = "allow-scripts";
             iframe.src = "about:blank";
             iframe.className = "code-executor-result";
-            iframe.srcdoc = getExecutorDocByCode(el.textContent, type);
+            // iframe.srcdoc = getExecutorDocByCode(el.textContent, type);
             executor.appendChild(iframe);
 
             el.parentNode.insertBefore(executor, el.nextElementSibling);
