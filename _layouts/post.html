@@ -18,11 +18,299 @@ layout: default
 
     <div class="post-content" itemprop="articleBody">
         {{ content }}
-        
+
         <div class="license-box">
             <div>作者：<a href="https://github.com/{{ site.github_username }}">{{ site.github_username }}</a></div>
             <div>链接：<a href="https://bigfact.github.io{{ page.url }}">https://bigfact.github.io{{ page.url }}</a></div>
-            <div>版权声明：本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</div>
+            <div>版权声明：本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</div>
         </div>
     </div>
 </article>
+
+<script>
+    // 修改代码高亮样式
+    !(function () {
+        const syntaxHighlightClassNames = [
+            // 浅色
+            { label: 'default', value: "s_h_default" },
+            { label: 'base16', value: "s_h_base16" },
+            { label: 'igorpro', value: "s_h_igorpro" },
+            { label: 'magritte', value: "s_h_magritte" },
+            { label: 'pastie', value: "s_h_pastie" },
+            { label: 'github', value: "s_h_github" },
+            { label: 'bw', value: "s_h_bw" },
+            // 深色
+            { label: 'gruvbox', value: "s_h_gruvbox" },
+            { label: 'molokai', value: "s_h_molokai" },
+            { label: 'monokai', value: "s_h_monokai" },
+            { label: 'monokai_sublime', value: "s_h_monokai_sublime" },
+            { label: 'thankful_eyes', value: "s_h_thankful_eyes" },
+            { label: 'tulip', value: "s_h_tulip" },
+            { label: 'colorful', value: "s_h_colorful" }
+        ]
+        document.body.className = syntaxHighlightClassNames[10].value
+        // let i = 0;
+        // let tid = setInterval(function () {
+        //     document.body.className = syntaxHighlightClassNames[i++].value
+        //     if (i >= syntaxHighlightClassNames.length) clearInterval(tid)
+        // }, 3000)
+    })();
+</script>
+
+<script>
+    // 生成目录
+    !(function () {
+        function getHList() {
+            let result = Array.prototype.slice
+                .call(document.querySelectorAll("*[id]"))
+                .filter((el) => {
+                    return /h[1-6]/i.test(el.tagName);
+                });
+            result.forEach((el) => {
+                el._index = parseInt(el.tagName.replace(/h/i, ""));
+            });
+            return result;
+        }
+
+        function genRelation(hList) {
+            let hIndex = 0;
+            let parent = { _children: [] };
+            let result = parent;
+            hList.forEach((el) => {
+                let elIndex = el._index;
+                hIndex = hIndex || elIndex;
+                if (elIndex > hIndex) {
+                    parent = parent._children[parent._children.length - 1];
+                    hIndex++;
+                } else if (elIndex < hIndex) {
+                    parent = parent._parent;
+                    hIndex--;
+                }
+                el._children = el._children || [];
+                el._parent = parent;
+                parent._children.push(el);
+            });
+            return result;
+        }
+
+        function autoIndex(result, prefix) {
+            prefix = prefix || "";
+            for (let i = 0; i < result.length; i++) {
+                let cPrefix = prefix + (i + 1) + ".";
+                result[i].textContent = cPrefix + " " + result[i].textContent;
+                autoIndex(result[i]._children, cPrefix);
+            }
+        }
+
+        function genListElement(result) {
+            let ul = document.createElement("ul");
+            for (let i = 0; i < result.length; i++) {
+                let el = result[i];
+                let a = document.createElement("a");
+                a.href = "#" + el.id;
+                a.textContent = el.textContent;
+                let li = document.createElement("li");
+                li.appendChild(a);
+                li.appendChild(genListElement(el._children));
+                ul.appendChild(li);
+            }
+            return ul;
+        }
+
+        function insertList(result) {
+            let list = genListElement(result)
+            document.querySelector('header.post-header').appendChild(list);
+        }
+
+        let hList = getHList();
+        let result = genRelation(hList)._children;
+        autoIndex(result);
+        insertList(result)
+    })();
+</script>
+
+<script>
+    // 示例 js 脚本代码编辑、执行
+    !(function () {
+        function insertStyle() {
+            var style = document.createElement("style");
+            style.textContent = `
+                .code-run-btn {
+                    height: 30px;
+                    line-height: 30px;
+                    margin: 12px 0 6px;
+                    padding: 0 30px;
+                    font-size: 17px;
+                    box-sizing: border-box;
+                    border-radius: 0;
+                    border: 1px solid #999;
+                    display: block;
+                }
+                .code-executor-result {
+                    border: 1px solid #999;
+                    height: 100px;
+                    width: 100%;
+                    border-radius: 0;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        function getExecutorDocByCode(codeString, type) {
+            type = type || 'js'
+            let codeStringTmp = ''
+            if (type === 'js') {
+                codeStringTmp = `
+                    <script>
+                        (function () {
+                            ${codeString}
+                        })()
+                    <\/script>
+                `
+            } else if (type === 'html') {
+                codeStringTmp = codeString
+            }
+            return `
+				<!DOCTYPE html>
+					<html lang="en">
+					<head>
+							<meta charset="UTF-8">
+							<meta http-equiv="X-UA-Compatible" content="IE=edge">
+							<meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<title></title>
+							<style>
+							body {
+								margin: 0;
+                                color: #fff;
+							}
+							.console-line {
+								border-bottom: 1px solid #999;
+								margin: 6px auto;
+								padding: 3px 6px;
+							}
+							.error {
+								color: red;
+							}
+							.warn {
+								color: orange;
+							}
+							.num {
+								opacity: 0.7;
+							}
+							</style>
+					</head>
+					<body>
+						<script>
+							function toString(val) {
+								var type = Object.prototype.toString.call(val)
+								if (/Boolean|Number|String/.test(type)) {
+									return val.toString();
+								} else if (/Array|Object/.test(type)) {
+									return JSON.stringify(val, "", 2);
+								} else {
+									try {
+										return val.toString()
+									} catch (err) {
+										return val;
+									}
+								}
+							}
+							function consoleFunc(func) {
+								return function() {
+                                    var consoleContent = document.querySelector('.console-content')
+                                    if (!consoleContent) {
+                                        consoleContent = document.createElement("div");
+                                        consoleContent.className = 'console-content'
+                                        document.body.appendChild(consoleContent);
+                                    }
+									consoleFunc.num = consoleFunc.num || 0
+									consoleFunc.num++
+									var args = [].slice.call(arguments);
+									var p = document.createElement("p");
+									p.className = "console-line " + func;
+									var num = document.createElement("i");
+									num.textContent = consoleFunc.num + ':';
+									num.className = "num";
+									p.appendChild(num);
+									for (var i = 0; i < args.length; i++) {
+										var span = document.createElement("span");
+										span.textContent = " " + toString(args[i]);
+										p.appendChild(span);
+									}
+									consoleContent.appendChild(p);
+								}
+							}
+							console.log = consoleFunc("log");
+							console.error = consoleFunc("error");
+							console.warn = consoleFunc("warn");
+							console.info = consoleFunc("info");
+							
+							window.addEventListener('error', function(event) {
+								event.preventDefault();
+								event.stopPropagation();
+								console.error(event.error);
+							});
+						
+						<\/script>
+                        ${codeStringTmp}
+					</body>
+				</html>
+			`;
+        }
+
+        function handleCodeEl(el, type) {
+            el.setAttribute("contenteditable", "");
+            var executor = document.createElement("div");
+            executor.className = "code-executor";
+
+            var runBtn = document.createElement("button");
+            runBtn.className = "code-run-btn";
+            runBtn.textContent = "Run";
+            runBtn.addEventListener(
+                "click",
+                function (e) {
+                    iframe.srcdoc = getExecutorDocByCode(el.textContent, type);
+                },
+                false
+            );
+            executor.appendChild(runBtn);
+
+            var iframe = document.createElement("iframe");
+            iframe.sandbox = "allow-scripts";
+            iframe.src = "about:blank";
+            iframe.className = "code-executor-result";
+            // iframe.srcdoc = getExecutorDocByCode(el.textContent, type);
+            executor.appendChild(iframe);
+
+            el.parentNode.insertBefore(executor, el.nextElementSibling);
+        }
+
+        insertStyle();
+        document.querySelectorAll(".language-js code").forEach(function (el) { handleCodeEl(el, 'js'); });
+        document.querySelectorAll("code.language-js").forEach(function (el) { handleCodeEl(el, 'js'); });
+        document.querySelectorAll(".language-html code").forEach(function (el) { handleCodeEl(el, 'html'); });
+    })();
+</script>
+
+<script>
+    var disqus_config = function () {
+        this.page.url = location.href;
+        this.page.identifier = document.title;
+    };
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//bigfact.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+
+    (function () {
+        // add target="_blank" to outside link
+        document.querySelectorAll('.post-content a').forEach(el => {
+            if (el.href.indexOf(window.location.host) < 0 && /^http(s)?:\/\/.+$/.test(el.href)) {
+                el.setAttribute('target', '_blank')
+            }
+        })
+    })();
+</script>
