@@ -31,6 +31,7 @@ layout: default
     // 修改代码高亮样式
     !(function () {
         const syntaxHighlightClassNames = [
+            // 浅色
             { label: 'default', value: "s_h_default" },
             { label: 'base16', value: "s_h_base16" },
             { label: 'igorpro', value: "s_h_igorpro" },
@@ -38,15 +39,16 @@ layout: default
             { label: 'pastie', value: "s_h_pastie" },
             { label: 'github', value: "s_h_github" },
             { label: 'bw', value: "s_h_bw" },
+            // 深色
             { label: 'gruvbox', value: "s_h_gruvbox" },
             { label: 'molokai', value: "s_h_molokai" },
             { label: 'monokai', value: "s_h_monokai" },
+            { label: 'monokai_sublime', value: "s_h_monokai_sublime" },
             { label: 'thankful_eyes', value: "s_h_thankful_eyes" },
             { label: 'tulip', value: "s_h_tulip" },
-            { label: 'colorful', value: "s_h_colorful" },
-            { label: 'monokai_sublime', value: "s_h_monokai_sublime" }
+            { label: 'colorful', value: "s_h_colorful" }
         ]
-        document.body.className = syntaxHighlightClassNames[3].value
+        document.body.className = syntaxHighlightClassNames[10].value
         // let i = 0;
         // let tid = setInterval(function () {
         //     document.body.className = syntaxHighlightClassNames[i++].value
@@ -179,6 +181,7 @@ layout: default
 							<style>
 							body {
 								margin: 0;
+                                color: #fff;
 							}
 							.console-line {
 								border-bottom: 1px solid #999;
