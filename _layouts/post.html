@@ -22,7 +22,7 @@ layout: default
         <div class="license-box">
             <div>作者：<a href="https://github.com/{{ site.github_username }}">{{ site.github_username }}</a></div>
             <div>链接：<a href="https://bigfact.github.io{{ page.url }}">https://bigfact.github.io{{ page.url }}</a></div>
-            <div>版权声明：本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</div>
+            <div>版权声明：本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</div>
         </div>
     </div>
 </article>
@@ -259,4 +259,27 @@ layout: default
         document.querySelectorAll("code.language-js").forEach(function (el) { handleCodeEl(el, 'js'); });
         document.querySelectorAll(".language-html code").forEach(function (el) { handleCodeEl(el, 'html'); });
     })();
+</script>
+
+<script>
+	var disqus_config = function () {
+		this.page.url = location.href;
+		this.page.identifier = document.title;
+	};
+
+	(function () { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = '//bigfact.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+	})();
+
+	(function () {
+		// add target="_blank" to outside link
+		document.querySelectorAll('.post-content a').forEach(el => {
+			if (el.href.indexOf(window.location.host) < 0 && /^http(s)?:\/\/.+$/.test(el.href)) {
+				el.setAttribute('target', '_blank')
+			}
+		})
+	})();
 </script>

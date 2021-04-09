@@ -1,10 +1,26 @@
 ---
 layout: post
-title: "二叉树遍历"
+title: "二叉树"
 date: 2021-04-06 10:19:09 +0800
 category: data-structure
 tags: binary-tree js
 ---
+
+## [条件](http://data.biancheng.net/view/192.html){:target="\_blank"}
+
+- 本身是[有序树](http://data.biancheng.net/view/23.html){:target="\_blank"}（如果树中结点的子树从左到右看，谁在左边，谁在右边，是有规定的，这棵树称为有序树；反之称为无序树）
+- 每个节点最多有 `2` 个子节点（左子树和右子树）
+
+```
+例如：
+      4
+    /   \
+  5       2
+ /       / \
+6       1   3
+```
+
+## 遍历
 
 ```js
 function BinaryTreeNode(value) {
@@ -130,28 +146,41 @@ function random(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const node = BinaryTree.initTreeByDeep(3);
+// const root = BinaryTree.initTreeByDeep(3);
+// console.log("二叉树: ");
+// console.log(root);
+// console.log("\n");
 
-console.log("二叉树: ");
-console.log(JSON.stringify(node, "", 2));
+const root = {
+  left: {
+    left: { left: null, right: null, value: 7 },
+    right: { left: null, right: null, value: 6 },
+    value: 2
+  },
+  right: {
+    left: { left: null, right: null, value: 3 },
+    right: { left: null, right: null, value: 3 },
+    value: 5
+  },
+  value: 8
+};
 
-console.log("\n");
 console.log("前序遍历: ");
-console.log("递归: ", BinaryTree.preTraverse(node));
-console.log("循环: ", BinaryTree.preTraverseFor(node));
-
+console.log("递归: ", BinaryTree.preTraverse(root));
+console.log("循环: ", BinaryTree.preTraverseFor(root));
 console.log("\n");
+
 console.log("中序遍历: ");
-console.log("递归: ", BinaryTree.midTraverse(node));
-console.log("循环: ", BinaryTree.midTraverseFor(node));
-
+console.log("递归: ", BinaryTree.midTraverse(root));
+console.log("循环: ", BinaryTree.midTraverseFor(root));
 console.log("\n");
+
 console.log("后序遍历: ");
-console.log("递归: ", BinaryTree.postTraverse(node));
-console.log("循环: ", BinaryTree.postTraverseFor(node));
-
+console.log("递归: ", BinaryTree.postTraverse(root));
+console.log("循环: ", BinaryTree.postTraverseFor(root));
 console.log("\n");
+
 console.log("层序遍历: ");
-console.log("递归: ", BinaryTree.levelTraverse([node]));
-console.log("循环: ", BinaryTree.levelTraverseFor(node));
+console.log("递归: ", BinaryTree.levelTraverse([root]));
+console.log("循环: ", BinaryTree.levelTraverseFor(root));
 ```
