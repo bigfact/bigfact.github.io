@@ -48,7 +48,7 @@ layout: default
             { label: 'tulip', value: "s_h_tulip" },
             { label: 'colorful', value: "s_h_colorful" }
         ]
-        document.body.className = syntaxHighlightClassNames[10].value
+        // document.body.className = syntaxHighlightClassNames[10].value
         // let i = 0;
         // let tid = setInterval(function () {
         //     document.body.className = syntaxHighlightClassNames[i++].value
@@ -132,6 +132,13 @@ layout: default
 <script>
     // 示例 js 脚本代码编辑、执行
     !(function () {
+        function insertScript(url) {
+            var script = document.createElement('script');
+            script.src = url;
+            document.body.appendChild(script);
+            return script
+        }
+
         function insertStyle() {
             var style = document.createElement("style");
             style.textContent = `
@@ -258,8 +265,7 @@ layout: default
 			`;
         }
 
-        function handleCodeEl(el, type) {
-            el.setAttribute("contenteditable", "");
+        function initExecutor(editor, type) {
             var executor = document.createElement("div");
             executor.className = "code-executor";
 
@@ -269,7 +275,7 @@ layout: default
             runBtn.addEventListener(
                 "click",
                 function (e) {
-                    iframe.srcdoc = getExecutorDocByCode(el.textContent, type);
+                    iframe.srcdoc = getExecutorDocByCode(editor.getValue(), type);
                 },
                 false
             );
@@ -282,13 +288,36 @@ layout: default
             // iframe.srcdoc = getExecutorDocByCode(el.textContent, type);
             executor.appendChild(iframe);
 
-            el.parentNode.insertBefore(executor, el.nextElementSibling);
+            editor.container.parentNode.insertBefore(executor, editor.container.nextElementSibling);
         }
 
         insertStyle();
-        document.querySelectorAll(".language-js code").forEach(function (el) { handleCodeEl(el, 'js'); });
-        document.querySelectorAll("code.language-js").forEach(function (el) { handleCodeEl(el, 'js'); });
-        document.querySelectorAll(".language-html code").forEach(function (el) { handleCodeEl(el, 'html'); });
+
+        function initAceEditor(el, type) {
+            var editorDiv = document.createElement('div')
+            editorDiv.textContent = el.textContent
+            editorDiv.setAttribute('style', 'height: ' + el.parentNode.clientHeight + 'px; max-height: 600px;')
+            el.parentNode.insertBefore(editorDiv, el);
+            el.textContent = ''
+            var editor = ace.edit(editorDiv);
+            editor.setTheme("ace/theme/monokai");
+            if (type === 'js') editor.session.setMode("ace/mode/javascript");
+            return editor
+        }
+
+        function initRunners() {
+            insertScript('https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.min.js').onload = function () {
+                // https://cdnjs.com/libraries/ace
+                ace.config.set('basePath', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/');
+                document.querySelectorAll(".language-js code").forEach(function (el) { var editor = initAceEditor(el, 'js'); initExecutor(editor, 'js'); });
+                document.querySelectorAll("code.language-js").forEach(function (el) { var editor = initAceEditor(el, 'js'); initExecutor(editor, 'js'); });
+                document.querySelectorAll(".language-html code").forEach(function (el) { var editor = initAceEditor(el, 'html'); initExecutor(editor, 'html'); });
+            };
+        }
+
+        if (/mode=editor/.test(location.search)) {
+            initRunners()
+        }
     })();
 </script>
 

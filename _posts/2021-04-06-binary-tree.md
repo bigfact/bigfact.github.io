@@ -133,6 +133,42 @@ BinaryTree.levelTraverseFor = function levelTraverseFor(node) {
   return res;
 };
 
+// 层序遍历（分层） 自定向下、自左到右按层遍历
+BinaryTree.levelTraverse2 = function levelTraverse(nodes) {
+  let res = [];
+  let level = [];
+  let tmp = [];
+  for (let i = 0; i < nodes.length; i++) {
+    let node = nodes[i];
+    if (node) {
+      level.push(node.value);
+      tmp.push(node.left);
+      tmp.push(node.right);
+    }
+  }
+  if (level.length) res.push(level);
+  if (tmp.length > 0) res = res.concat(levelTraverse(tmp));
+  return res;
+};
+BinaryTree.levelTraverseFor2 = function levelTraverseFor(node) {
+  let res = [];
+  let quque = [node];
+  while (quque.length) {
+    let len = quque.length;
+    let level = [];
+    for (let i = 0; i < len; i++) {
+      node = quque.shift();
+      if (node) {
+        level.push(node.value);
+        if (node.left) quque.push(node.left);
+        if (node.right) quque.push(node.right);
+      }
+    }
+    if (level.length) res.push(level);
+  }
+  return res;
+};
+
 // 初始化
 BinaryTree.initTreeByDeep = function initTreeByDeep(deep) {
   if (!deep) return null;
@@ -183,4 +219,9 @@ console.log("\n");
 console.log("层序遍历: ");
 console.log("递归: ", BinaryTree.levelTraverse([root]));
 console.log("循环: ", BinaryTree.levelTraverseFor(root));
+console.log("\n");
+
+console.log("层序遍历（分层）: ");
+console.log("递归: ", BinaryTree.levelTraverse2([root]));
+console.log("循环: ", BinaryTree.levelTraverseFor2(root));
 ```
