@@ -3,16 +3,17 @@ layout: post
 title: "二叉树"
 date: 2021-04-06 10:19:09 +0800
 category: data-structure
-tags: binary-tree js
+tags: 数据结构 JavaScript
 ---
+
+理解二叉树、二叉树遍历（前序遍历、中序遍历、后序遍历、层序遍历）和其衍生数据结构
 
 ## [条件](http://data.biancheng.net/view/192.html){:target="\_blank"}
 
 - 本身是[有序树](http://data.biancheng.net/view/23.html){:target="\_blank"}（如果树中结点的子树从左到右看，谁在左边，谁在右边，是有规定的，这棵树称为有序树；反之称为无序树）
-- 每个节点最多有 `2` 个子节点（左子树和右子树）
+- 每个结点最多有 `2` 个子结点（结点的`度`最多为 2）
 
 ```
-例如：
       4
     /   \
   5       2
@@ -34,7 +35,10 @@ function BinaryTree() {}
 // 前序遍历 根左右/右左根 DLR/RLD
 BinaryTree.preTraverse = function preTraverse(node) {
   let res = [];
-  if (!node) return res;
+  if (!node) {
+    // res.push(null);
+    return res;
+  }
   res.push(node.value);
   res = res.concat(preTraverse(node.left));
   res = res.concat(preTraverse(node.right));
@@ -49,6 +53,7 @@ BinaryTree.preTraverseFor = function preTraverseFor(node) {
       res.push(node.value);
       node = node.left;
     } else {
+      // res.push(null);
       node = stack.pop();
       node = node.right;
     }
@@ -169,37 +174,23 @@ BinaryTree.levelTraverseFor2 = function levelTraverseFor(node) {
   return res;
 };
 
-// 初始化
-BinaryTree.initTreeByDeep = function initTreeByDeep(deep) {
-  if (!deep) return null;
-  let node = new BinaryTreeNode(random(1, 10));
-  node.left = initTreeByDeep(deep - 1);
-  node.right = initTreeByDeep(deep - 1);
+// 根据前序遍历数组初始化二叉树
+BinaryTree.initTreeByDLRArr = function initTreeByDLRArr(arr) {
+  if (!arr.length) return null;
+  let val = arr.shift();
+  if (!val) return null;
+  const node = new BinaryTreeNode(val);
+  node.left = initTreeByDLRArr(arr);
+  node.right = initTreeByDLRArr(arr);
   return node;
 };
 
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+const arr = [8, 2, 7, null, null, 6, null, null, 5, 3, null, null, 3];
+const root = BinaryTree.initTreeByDLRArr(arr);
 
-// const root = BinaryTree.initTreeByDeep(3);
-// console.log("二叉树: ");
-// console.log(root);
-// console.log("\n");
-
-const root = {
-  left: {
-    left: { left: null, right: null, value: 7 },
-    right: { left: null, right: null, value: 6 },
-    value: 2
-  },
-  right: {
-    left: { left: null, right: null, value: 3 },
-    right: { left: null, right: null, value: 3 },
-    value: 5
-  },
-  value: 8
-};
+console.log("二叉树: ");
+console.log(root);
+console.log("\n");
 
 console.log("前序遍历: ");
 console.log("递归: ", BinaryTree.preTraverse(root));
@@ -224,4 +215,51 @@ console.log("\n");
 console.log("层序遍历（分层）: ");
 console.log("递归: ", BinaryTree.levelTraverse2([root]));
 console.log("循环: ", BinaryTree.levelTraverseFor2(root));
+```
+
+## 衍生数据结构
+
+### 满二叉树
+
+二叉树中除叶子结点和最后一层子结点外，每个结点都有`2`个子结点（度都为 2）
+
+```
+      4
+    /   \
+  5       2
+ / \     / \
+6   7   1   3
+```
+
+```js
+const root = {
+  left: {
+    left: { left: null, right: null, value: 6 },
+    right: { left: null, right: null, value: 7 },
+    value: 5
+  },
+  right: {
+    left: { left: null, right: null, value: 1 },
+    right: { left: null, right: null, value: 3 },
+    value: 2
+  },
+  value: 4
+};
+
+// 判断二叉树是否为满二叉树
+function isFullBinaryTree(root) {
+  // @todo
+}
+```
+
+### 完全二叉树
+
+二叉树中除去最后一层结点为满二叉树，且最后一层的结点依次从左到右分布
+
+```
+      4
+    /   \
+  5       2
+ / \     / \
+6   7   1
 ```
