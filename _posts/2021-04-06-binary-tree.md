@@ -111,7 +111,7 @@ BinaryTree.postTraverseFor = function postTraverseFor(node) {
   return res;
 };
 
-// 层序遍历 自定向下、自左到右按层遍历
+// 层序遍历 自顶向下、自左到右按层遍历
 BinaryTree.levelTraverse = function levelTraverse(nodes) {
   let res = [];
   let tmp = [];
@@ -138,7 +138,7 @@ BinaryTree.levelTraverseFor = function levelTraverseFor(node) {
   return res;
 };
 
-// 层序遍历（分层） 自定向下、自左到右按层遍历
+// 层序遍历（分层） 自顶向下、自左到右按层遍历
 BinaryTree.levelTraverse2 = function levelTraverse(nodes) {
   let res = [];
   let level = [];
