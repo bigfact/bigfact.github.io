@@ -145,7 +145,7 @@ layout: default
                 .code-run-btn {
                     height: 30px;
                     line-height: 30px;
-                    margin: 12px 0 6px;
+                    margin-top: 8px;
                     padding: 0 30px;
                     font-size: 17px;
                     box-sizing: border-box;
@@ -158,6 +158,7 @@ layout: default
                     height: 100px;
                     width: 100%;
                     border-radius: 0;
+                    margin-top: 8px;
                 }
             `;
             document.head.appendChild(style);
@@ -285,13 +286,22 @@ layout: default
             iframe.sandbox = "allow-scripts";
             iframe.src = "about:blank";
             iframe.className = "code-executor-result";
-            // iframe.srcdoc = getExecutorDocByCode(el.textContent, type);
             executor.appendChild(iframe);
 
             editor.container.parentNode.insertBefore(executor, editor.container.nextElementSibling);
         }
 
-        insertStyle();
+        function initExecutor2(el, type, code) {
+            var executor = document.createElement("div");
+            executor.className = "code-executor";
+            var iframe = document.createElement("iframe");
+            iframe.sandbox = "allow-scripts";
+            iframe.src = "about:blank";
+            iframe.className = "code-executor-result";
+            iframe.srcdoc = getExecutorDocByCode(code, type);
+            executor.appendChild(iframe);
+            el.parentNode.insertBefore(executor, el.nextElementSibling);
+        }
 
         function initAceEditor(el, type) {
             var editorDiv = document.createElement('div')
@@ -305,7 +315,7 @@ layout: default
             return editor
         }
 
-        function initRunners() {
+        function initAceEditors() {
             insertScript('https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.min.js').onload = function () {
                 // https://cdnjs.com/libraries/ace
                 ace.config.set('basePath', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/');
@@ -315,8 +325,17 @@ layout: default
             };
         }
 
+        function initExecutors() {
+            document.querySelectorAll(".language-js code").forEach(function (el) { initExecutor2(el, 'js', el.textContent); });
+            document.querySelectorAll("code.language-js").forEach(function (el) { initExecutor2(el, 'js', el.textContent); });
+            document.querySelectorAll(".language-html code").forEach(function (el) { initExecutor2(el, 'html', el.textContent); });
+        }
+
+        insertStyle();
         if (/mode=editor/.test(location.search)) {
-            initRunners()
+            initAceEditors()
+        } else {
+            initExecutors()
         }
     })();
 </script>
